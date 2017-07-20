@@ -1,0 +1,5 @@
+# comment
+.vscode
+*/.vscode
+venv
+*/venv

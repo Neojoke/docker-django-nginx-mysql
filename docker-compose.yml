@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    expose:
+      - "3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE=myblogdb
+      - MYSQL_ROOT_PASSWORD=wupeng90850
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on: 
+      - db
